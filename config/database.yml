@@ -1,0 +1,23 @@
+development: &default
+  adapter: postgresql
+  database: hackerspace_development
+  encoding: utf8
+  min_messages: warning
+  pool: 5
+  timeout: 5000
+  host: localhost
+  port: 5432
+  username: hs
+  password: hs
+
+test:
+  <<: *default
+  database: hackerspace_test
+
+production:
+  <<: *default
+  database: hackerspace_production 
+
+staging:
+  <<: *default
+  database: hackerspace_staging   
