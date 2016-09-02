@@ -5,7 +5,7 @@
 .panel.panel-default
   .panel-heading
     %i.icon-edit.icon-large
-    = t('tt.show', resource_name: user.model_name.human)
+    = t('tt.show', resource_name: "Profile")
   .panel-body
     = show_for @profile do |s|
       = s.attribute :name

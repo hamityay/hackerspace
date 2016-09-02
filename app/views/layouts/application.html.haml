@@ -18,9 +18,24 @@
     .container-narrow
       .masthead
         %ul.nav.nav-pills.pull-right
-          %li.active
-            %a{href: "/"}
-              = t('navbar.home_page')
+          - if user_signed_in?
+            %li
+              = link_to destroy_user_session_path, method: :delete do
+                %i.fa.fa-sign-out
+                = t('navbar.sign_out')
+            %li
+              = link_to user_profile_path(current_user) do
+                %i.fa.fa-user
+                = t('navbar.profile')
+          - else
+            %li
+              = link_to new_user_session_path do
+                %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+                = t('navbar.signin')
+            %li
+              = link_to new_user_registration_path do
+                %i.fa.fa-user{"aria-hidden" => "true"}
+                = t('navbar.signup')
         %h3.muted= link_to "Hackerspace", root_path
       %hr/
       = render partial: 'layouts/partials/messages'
