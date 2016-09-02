@@ -6,10 +6,15 @@
   .panel-heading
     %i.icon-edit.icon-large
     = t('tt.show', resource_name: "Profile")
+
   .panel-body
     = show_for @profile do |s|
       = s.attribute :name
       = s.attribute :surname
       = s.attribute :email
+      = s.attribute :twitter
+      = s.attribute :bio
       = s.attribute :created_at
       = s.attribute :updated_at
+      <br>
+    = link_to 'Edit Profile', edit_user_profile_path, class: 'btn btn-default'

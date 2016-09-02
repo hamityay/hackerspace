@@ -28,6 +28,9 @@ class User::ProfileController < User::UserApplicationController
       .permit(
         :name,
         :surname,
+        :eposta,
+        :twitter,
+        :bio,
         :time_zone
     )
   end

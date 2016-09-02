@@ -18,6 +18,8 @@
     = f.input :password_confirmation
     = f.input :name
     = f.input :surname
+    = f.input :twitter
+    = f.input :bio
     = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
   .form-actions
     = f.button :submit, t('devise.registration.new.button'), class: 'btn btn-primary'
