@@ -22,7 +22,7 @@ class Hq::AdminsController < Hq::ApplicationController
 
   def edit
     add_breadcrumb @admin.name, hq_admin_path(@admin)
-    add_breadcrumb t('tooltips.edit'), edit_hq_admin_path
+    add_breadcrumb t('tooltips.new'), edit_hq_admin_path
   end
 
   def create

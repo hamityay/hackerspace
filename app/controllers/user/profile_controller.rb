@@ -9,7 +9,7 @@ class User::ProfileController < User::UserApplicationController
   end
 
   def edit
-    add_breadcrumb t('tooltips.edit'), edit_user_profile_path
+    add_breadcrumb t('tooltips.new'), edit_user_profile_path
   end
 
   def update
@@ -28,7 +28,7 @@ class User::ProfileController < User::UserApplicationController
       .permit(
         :name,
         :surname,
-        :eposta,
+        :email,
         :twitter,
         :bio,
         :time_zone

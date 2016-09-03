@@ -22,7 +22,7 @@ class Hq::CitiesController < Hq::ApplicationController
 
   def edit
     add_breadcrumb @city.name, hq_city_path(@city)
-    add_breadcrumb t('tooltips.edit'), edit_hq_city_path
+    add_breadcrumb t('tooltips.new'), edit_hq_city_path
   end
 
   def create

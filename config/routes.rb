@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: { sessions: 'hq/sessions', registrations: 'hq/registrations', passwords: 'hq/passwords' }, path: 'hq',
              path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',  confirmation: 'verification' }
   as :admin do
-    get 'hq/edit' => 'hq/registrations#edit', as: 'edit_admin_registration'
+    get 'hq/new' => 'hq/registrations#new', as: 'edit_admin_registration'
     put 'hq' => 'hq/registrations#update', as: 'admin_registration'
   end
   namespace :hq do
@@ -27,18 +27,20 @@ Rails.application.routes.draw do
     resources :countries
     resources :cities
     resources :audits, only: [:index, :show]
+    resources :cards, only: [:update]
   end
   # Users
   devise_for :users, controllers: { sessions: 'user/sessions', registrations: 'user/registrations', passwords: 'user/passwords' }, path: 'user',
              path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',  confirmation: 'verification' }
   as :user do
-    get 'user/edit' => 'user/registrations#edit', as: 'edit_user_profile_registration'
+    get 'user/new' => 'user/registrations#new', as: 'edit_user_profile_registration'
     put 'user' => 'user/registrations#update', as: 'user_profile_registration'
   end
   namespace :user do
     root to: 'dashboard#index'
     resources :dashboard, only: [:index]
     resources :profile, only: [:show, :edit, :update]
+    resources :cards, only: [:new, :create]
   end
 
   # Common pages

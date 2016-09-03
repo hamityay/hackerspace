@@ -22,7 +22,7 @@ class Hq::UsersController < Hq::ApplicationController
 
   def edit
     add_breadcrumb @user.name, hq_user_path(@user)
-    add_breadcrumb t('tooltips.edit'), edit_hq_user_path
+    add_breadcrumb t('tooltips.new'), edit_hq_user_path
   end
 
   def create

@@ -34,7 +34,7 @@ module Haml
 
       def available_views
         file = "_#{singular_table_name}"
-        list = %w(index edit show new _list _blank _filters)
+        list = %w(index new show new _list _blank _filters)
         list << file
         list
       end

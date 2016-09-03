@@ -5,7 +5,7 @@ class Hq::RegistrationsController < Devise::RegistrationsController
   add_breadcrumb I18n.t('dock.dashboard'), :hq_dashboard_index_path
 
   def edit
-    add_breadcrumb I18n.t('tt.edit', resource_name: Admin.model_name.human)
+    add_breadcrumb I18n.t('tt.new', resource_name: Admin.model_name.human)
   end
 
   private

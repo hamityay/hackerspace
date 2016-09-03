@@ -8,7 +8,7 @@
   %td.action
     = link_to([:hq, admin], class: 'btn btn-success', data: { toggle: :tooltip}, title: t('tooltips.zoom')) do
       %i.icon-zoom-in
-    = link_to(edit_hq_admin_path(admin) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.edit')) do
+    = link_to(edit_hq_admin_path(admin) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.new')) do
       %i.icon-edit
     - if admin.id != current_admin.id
       = link_to([:hq, admin], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do

@@ -43,7 +43,7 @@ namespace :postgresql do
       if 'true' ==  capture("if [ -e #{full_path} ]; then echo 'true'; fi").strip
         execute "mv #{full_path} #{full_path}.#{Time.now.to_i}"
       end
-      # Generate new model
+      # Generate edit model
       gem_execute "backup generate:model -t #{fetch(:application)} --storages=local --compressor=gzip --databases=postgresql"
       execute "rm #{full_path}"
       template 'backup_model.erb', full_path

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 <% module_namespacing do -%>
 class <%= controller_class_name %>Controller < ApplicationController
-  before_action :<%= "set_#{singular_table_name}" %>, only: [:show, :edit, :update, :destroy]
+  before_action :<%= "set_#{singular_table_name}" %>, only: [:show, :new, :update, :destroy]
   add_breadcrumb I18n.t('activerecord.models.<%= singular_table_name %>'), :<%= table_name %>_path
 <% unless options[:singleton] -%>
   def index
@@ -24,7 +24,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def edit
     add_breadcrumb @<%= singular_table_name %>.id, <%= singular_table_name %>_path(@<%= singular_table_name %>)
-    add_breadcrumb t('tooltips.edit'), edit_<%= singular_table_name %>_path
+    add_breadcrumb t('tooltips.new'), edit_<%= singular_table_name %>_path
   end
 
   def create
