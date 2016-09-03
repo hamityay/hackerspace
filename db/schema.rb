@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902192018) do
+ActiveRecord::Schema.define(version: 20160903005004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20160902192018) do
   add_index "audits", ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
   add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
 
+  create_table "cards", id: false, force: :cascade do |t|
+    t.string   "card_id",    null: false
+    t.string   "card_no"
+    t.boolean  "status"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cards", ["card_id"], name: "index_cards_on_card_id", unique: true, using: :btree
+  add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
+
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.integer  "country_id"
@@ -100,5 +112,6 @@ ActiveRecord::Schema.define(version: 20160902192018) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "cards", "users"
   add_foreign_key "cities", "countries"
 end
