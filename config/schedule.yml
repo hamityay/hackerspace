@@ -14,3 +14,8 @@
 #  cron: 1 0 * * * Europe/Istanbul
 #  class: JobName
 #  queue: high_priority
+
+logs_worker;
+  cron: "*/5 * * * *"
+  class: "LogsWorker"
+  queue: logs_worker
