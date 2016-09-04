@@ -1,11 +1,10 @@
 class LogsWorker
   include Sidekiq::Worker
-  include ActiveRecord::Base
 
   def perform
     Log.all.each do |log|
-      if log.enter_time != nil and log.exit_time == nil
-        log.exit_time = DateTime.now if log.enter_time + 3.hours <= DateTime.now
+      if log.enter_time != nil and log.exit_time == nil and log.enter_time + 3.hours <= DateTime.now
+        log.exit_time = DateTime.now
       end
     end
   end
