@@ -9,12 +9,12 @@ class LogsController < ApplicationController
       @card = Card.find(params[:card_id])
       @user = @card.user
       if @user.is_active == true and @user.card.status == true
-        if @user.logs.last.enter_time != nil and @user.logs.last.exit_time == nil
-          @user.logs.last.update(exit_time: DateTime.now)
-        else
+        if @user.logs.last == nil
           @log = @user.logs.new
           @log.enter_time = DateTime.now
           @log.save
+        elsif @user.logs.last.enter_time != nil and @user.logs.last.exit_time == nil
+          @user.logs.last.update(exit_time: DateTime.now)
         end
       #else
       end
