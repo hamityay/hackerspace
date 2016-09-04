@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   #associations
   has_one :card
+  has_many :logs
   accepts_nested_attributes_for :card
 
   # Scopes
