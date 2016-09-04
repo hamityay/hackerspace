@@ -98,15 +98,6 @@ ActiveRecord::Schema.define(version: 20160904053350) do
 
   add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
 
-  create_table "sessions", force: :cascade do |t|
-    t.datetime "enter_time"
-    t.datetime "exit_time"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
