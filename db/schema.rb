@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160903201828) do
+ActiveRecord::Schema.define(version: 20160904053350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,26 @@ ActiveRecord::Schema.define(version: 20160903201828) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "logs", force: :cascade do |t|
+    t.datetime "enter_time"
+    t.datetime "exit_time"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "enter_time"
+    t.datetime "exit_time"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
@@ -114,4 +134,5 @@ ActiveRecord::Schema.define(version: 20160903201828) do
 
   add_foreign_key "cards", "users"
   add_foreign_key "cities", "countries"
+  add_foreign_key "logs", "users"
 end
