@@ -18,3 +18,7 @@
       = s.attribute :last_sign_in_at
       = s.attribute :created_at
       = s.attribute :updated_at
+    %b Card No <br>
+    = @user.card.card_no
+    %b <br> Card Onayı<br>
+    = @user.card.status
