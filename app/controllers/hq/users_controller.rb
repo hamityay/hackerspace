@@ -33,6 +33,7 @@ class Hq::UsersController < Hq::ApplicationController
 
   def update
     @user.update(user_params)
+    @user.card.update(status: params[:user][:cards][:status])
     respond_with(:hq, @user)
   end
 
@@ -59,6 +60,7 @@ class Hq::UsersController < Hq::ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :name, :surname, :time_zone)
+    params.require(:user).permit(:email, :name, :surname, :time_zone,
+                                 cards_attributes: [:status])
   end
 end

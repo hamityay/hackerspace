@@ -10,6 +10,8 @@
         = f.input :name
         = f.input :surname
         = f.input :email
+        = f.simple_fields_for :cards do |c|
+          = c.input :status, as: :radio_buttons,  :collection => [ ['Aktif', true], ['Pasif', false] ], :checked => [@user.card.status]
         = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
 
       .form-actions

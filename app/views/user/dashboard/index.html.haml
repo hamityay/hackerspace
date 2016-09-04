@@ -3,9 +3,13 @@
     .row
       .col-lg-12
         .alert.alert-info
-          = t('view.hello', user: current_user.email)
-        - if current_user.card == nil
-          = link_to 'Activate your card', new_user_card_path, class: 'btn btn-info'
+          = t('view.hello', user: current_user.name)
 
-        = link_to t('navbar.sign_out'), destroy_user_session_path, method: :delete, class: 'btn btn-danger'
-        = link_to t('navbar.edit_login_info'), edit_user_registration_path, class: 'btn btn-primary'
+        - if current_user.card == nil
+          .alert.alert-danger
+            Kart ekleme işlemini gerçekleştirmeniz gerekmektedir!!! Lütfen aşağıdaki butona tıklayınız.
+            Aksi takdirde hesabınız silinebilir.
+          = link_to 'Kart etkinleştir', new_user_card_path, class: 'btn btn-info'
+        - else
+          = link_to t('navbar.sign_out'), destroy_user_session_path, method: :delete, class: 'btn btn-danger'
+          = link_to t('navbar.edit_login_info'), edit_user_registration_path, class: 'btn btn-primary'

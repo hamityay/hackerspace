@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   #associations
   has_one :card
+  accepts_nested_attributes_for :card
 
   # Scopes
   scope :active, -> { where(is_active: true) }

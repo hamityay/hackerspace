@@ -9,6 +9,7 @@
       %th= sort_link(@search, :current_sign_in_at, t('activerecord.attributes.user.current_sign_in_at'))
       %th= sort_link(@search, :last_sign_in_at, t('activerecord.attributes.user.last_sign_in_at'))
       %th= sort_link(@search, :is_active, t('activerecord.attributes.user.is_active'))
+      %th= sort_link(@search, :is_active, t('activerecord.attributes.user.include(:card).card.status'))
       %th.actions
         = t('view.actions')
   %tbody.users
