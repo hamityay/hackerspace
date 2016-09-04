@@ -1,5 +1,5 @@
 class Hq::UsersController < Hq::ApplicationController
-
+  before_action :detect_user, only: [:index]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :toggle_is_active]
   add_breadcrumb I18n.t('activerecord.models.users'), :hq_users_path
 
@@ -62,5 +62,9 @@ class Hq::UsersController < Hq::ApplicationController
   def user_params
     params.require(:user).permit(:email, :name, :surname, :time_zone,
                                  cards_attributes: [:status])
+  end
+
+  def detect_user
+    User.all.each { |u| u.destroy if u.card == nil }
   end
 end
