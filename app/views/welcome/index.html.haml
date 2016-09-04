@@ -37,6 +37,19 @@
   %strong Hackerspace i aktif kullanan kişi sayısı :
   = @count
   %hr/
+
+  %h2
+    %strong Hackerspace'i En Çok Kullanan On kişi
+  %hr/
+  - @top_users.each do |tu|
+    %strong
+      = @c = @c + 1
+    %strong _  İsim :
+    = tu.name
+    %strong Hacker Space Kullanım Adedi :
+    = tu.logs_count
+    %hr/
+
   %h2
     %strong Tüm Kullanıcılar Listeleniyor
   %hr/
