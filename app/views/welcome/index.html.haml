@@ -32,7 +32,7 @@
       %strong Üye olduğu tarih :
       = user.created_at
       %strong Hacker Space Kullanım Adedi :
-      = user.logs.count
+      = user.logs_count
       %hr/
   %strong Hackerspace i aktif kullanan kişi sayısı :
   = @count
@@ -59,7 +59,7 @@
     %strong Üye olduğu tarih :
     = user.created_at
     %strong Hacker Space Kullanım Adedi :
-    = user.logs.count
+    = user.logs_count
     %hr/
   %strong Toplam Üye sayısı :
   = @users.count
