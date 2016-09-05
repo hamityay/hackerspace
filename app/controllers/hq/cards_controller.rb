@@ -1,7 +1,10 @@
 class Hq::CardsController < Hq::ApplicationController
+  before_action :set_card, only: [:destroy]
 
   def index
-    @cards = Card.all
+    @search = Card.order(card_id: :desc).search(params[:q])
+    @cards = @search.result(distinct: true).paginate(page: params[:page])
+    respond_with(@cards)
   end
 
   def new
@@ -12,11 +15,20 @@ class Hq::CardsController < Hq::ApplicationController
     @card = Card.create(card_id: card_params[:card_id])
     if @card.save
       flash[:success] = 'Card başarı ile eklendi.'
-      redirect_to hq_dashboard_index_path
+      redirect_to hq_card_index_path
     end
+  end
+
+  def destroy
+    @card.destroy
+    respond_with(:hq, @city, location: request.referer)
   end
   private
     def card_params
       params.require(:card).permit(:card_id)
     end
-end
+
+    def set_card
+      @card = Card.find(params[:id])
+    end
+  end

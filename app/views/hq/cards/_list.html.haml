@@ -1,0 +1,12 @@
+.panel-body.filters
+  = render 'filters'
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :card_id, t('activerecord.attributes.card_id'))
+      %th.actions
+        = t('view.actions')
+      %th= sort_link(@search, :name, t('activerecord.attributes.card.user.name'))
+      %th= sort_link(@search, :name, t('activerecord.attributes.card.card_no'))
+  %tbody.users
+    = render @cards

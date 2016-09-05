@@ -1,0 +1,9 @@
+%tr{class: card.status ? 'active' : 'passive'}
+  %td= card.card_id
+  %td.action
+    = link_to([:hq, card], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure') }) do
+      %i.icon-trash
+  - if card.user != nil
+    %td= card.user.name
+    %td= card.card_no
+
