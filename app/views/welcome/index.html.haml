@@ -2,25 +2,23 @@
   %h2
     %strong Hackerspace'e Hoş Geldiniz
   - if current_user
-    = link_to t('navbar.sign_out'), destroy_user_session_path, class: 'btn btn-large', method: :delete
     .row-fluid.marketing
-      %p
-        %strong Name:
-        = current_user.name
-      %p
-        %strong Email:
-        = current_user.email
-      - if current_user.logs.last != nil
-        %p
-          %strong Hackerspace Son Online Tarihleri:<br>
-          %strong Giriş :
-          = current_user.logs.last.enter_time
-          %strong <br> Çıkış:
-          = current_user.logs.last.exit_time
-    = link_to t('navbar.edit_login_info'), edit_user_registration_path, class: 'btn btn-large'
-  - else
-    = link_to t('navbar.signup'), new_user_registration_path, class: 'btn btn-large btn-success'
-    = link_to t('navbar.signin'), new_user_session_path, class: 'btn btn-large'
+      %strong Name:
+      = current_user.name
+      %strong Email:
+      = current_user.email
+      = link_to t('navbar.edit_login_info'), edit_user_registration_path, class: 'btn btn-large'
+    - if current_user.logs.last != nil
+      %strong Hackerspace Son Online Tarihleri:<br>
+      %strong Giriş :
+      = current_user.logs.last.enter_time
+      %strong <br> Çıkış:
+      = current_user.logs.last.exit_time
+  %hr/
+  %h3
+    %strong Hackerspace'in Kullanım Grafiği
+  = line_chart Log.group_by_day(:created_at).count
+  %hr/
   %h2
     %strong Hackerspace'de Online Olan Kullanıcılar Listeleniyor
   %hr/

@@ -15,6 +15,8 @@
 #= require turbolinks
 #= require bootstrap
 #= require chosen-jquery
+#= require highcharts
+#= require chartkick
 #= require jquery.maskedinput.min
 #= require jquery.datetimepicker
 #= require nprogress

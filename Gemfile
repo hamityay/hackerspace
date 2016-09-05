@@ -102,5 +102,9 @@ gem 'to_xls', '~> 1.5', '>= 1.5.3'
 # Keep user activities
 gem 'audited-activerecord', '~> 4.2'
 
+#for charts
+gem 'chartkick', '~> 1.4', '>= 1.4.1'
+gem 'groupdate', '~> 2.5', '>= 2.5.2'
+
 # GSM service
 # gem 'bulutfon_sdk', '~> 1.1', '>= 1.1.3'
