@@ -33,7 +33,18 @@ class Hq::UsersController < Hq::ApplicationController
 
   def update
     @user.update(user_params)
-    @user.card.update(status: params[:user][:cards][:status])
+    if @card.card_id != params[:user][:card][:card_no]
+      @card.card_no = nil
+      @card.user_id = nil
+      @card.status = false
+      @card.save
+      @a_card = Card.find(params[:user][:card][:card_no])
+      @a_card.update(status: params[:user][:card][:status], card_no: params[:user][:card][:card_no])
+      @a_card.user_id = @user.id
+      @a_card.save
+    else
+      @card.update(status: params[:user][:card][:status], card_no: params[:user][:card][:card_no])
+    end
     respond_with(:hq, @user)
   end
 
@@ -57,11 +68,12 @@ class Hq::UsersController < Hq::ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+    @card = @user.card
   end
 
   def user_params
     params.require(:user).permit(:email, :name, :surname, :time_zone,
-                                 cards_attributes: [:status])
+                                 card_attributes: [:status, :card_no])
   end
 
   def detect_user

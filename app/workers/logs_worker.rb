@@ -4,7 +4,7 @@ class LogsWorker
   def perform
     Log.all.each do |log|
       if log.enter_time != nil and log.exit_time == nil and log.enter_time + 3.hours <= DateTime.now
-        log.exit_time = DateTime.now
+        log.exit_time = log.enter_time + 3.hours
       end
     end
   end

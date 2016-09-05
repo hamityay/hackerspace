@@ -11,8 +11,9 @@
         = f.input :surname
         = f.input :email
         - if @user.card != nil
-          = f.simple_fields_for :cards do |c|
-            = c.input :status, as: :radio_buttons,  :collection => [ ['Aktif', true], ['Pasif', false] ], :checked => [@user.card.status]
+          = f.simple_fields_for @card do |c|
+            = c.input :status, as: :radio_buttons,  :collection => [ ['Aktif', true], ['Pasif', false] ]
+            = c.input :card_no
         = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
 
       .form-actions
