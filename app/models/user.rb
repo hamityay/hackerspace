@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 
   #associations
   has_one :card
-  has_many :logs
   accepts_nested_attributes_for :card
+  has_many :logs
 
   # Scopes
   scope :active, -> { where(is_active: true) }

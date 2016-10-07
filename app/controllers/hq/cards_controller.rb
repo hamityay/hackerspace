@@ -15,13 +15,13 @@ class Hq::CardsController < Hq::ApplicationController
     @card = Card.create(card_id: card_params[:card_id])
     if @card.save
       flash[:success] = 'Card başarı ile eklendi.'
-      redirect_to hq_card_index_path
+      respond_with(:hq, @card, location: request.referer)
     end
   end
 
   def destroy
     @card.destroy
-    respond_with(:hq, @city, location: request.referer)
+    respond_with(:hq, @card, location: request.referer)
   end
   private
     def card_params

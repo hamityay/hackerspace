@@ -21,6 +21,9 @@
     = f.input :twitter
     = f.input :bio
     = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
+    = f.simple_fields_for :card do |c|
+      .nested-fields
+        = c.input :card_no
   .form-actions
     = f.button :submit, t('devise.registration.new.button'), class: 'btn btn-primary'
 = render 'devise/shared/links'
