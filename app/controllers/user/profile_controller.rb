@@ -31,7 +31,8 @@ class User::ProfileController < User::UserApplicationController
         :email,
         :twitter,
         :bio,
-        :time_zone
+        :time_zone,
+        :avatar
     )
   end
 end
