@@ -103,7 +103,7 @@ gem 'to_xls', '~> 1.5', '>= 1.5.3'
 gem 'audited-activerecord', '~> 4.2'
 
 #for charts
-gem 'chartkick', '~> 1.4', '>= 1.4.1'
+gem 'chartkick', '~> 3.4'
 gem 'groupdate', '~> 2.5', '>= 2.5.2'
 
 # GSM service
