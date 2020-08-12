@@ -89,7 +89,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    chartkick (1.5.2)
+    chartkick (3.4.0)
     chosen-rails (1.4.1)
       coffee-rails (>= 3.2)
       compass-rails (>= 1.1.2)
@@ -432,7 +432,7 @@ DEPENDENCIES
   capistrano-maintenance (~> 1.0)
   capistrano-rails (~> 1.1)
   capybara
-  chartkick (~> 1.4, >= 1.4.1)
+  chartkick (~> 3.4)
   chosen-rails (= 1.4.1)
   client_side_validations (~> 4.2, >= 4.2.1)
   client_side_validations-simple_form (~> 3.2, >= 3.2.1)
